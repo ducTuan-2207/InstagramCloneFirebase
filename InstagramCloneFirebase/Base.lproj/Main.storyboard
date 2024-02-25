@@ -8,21 +8,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Upload-->
         <scene sceneID="8Gp-dS-4sW">
             <objects>
-                <viewController id="o2Q-3I-zDr" sceneMemberID="viewController">
+                <viewController id="o2Q-3I-zDr" customClass="UpdateViewController" customModule="InstagramCloneFirebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jiP-6K-k5H">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="j6N-fM-96u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="wOt-US-6g8"/>
+                    <tabBarItem key="tabBarItem" title="Upload" image="square.and.arrow.up.fill" catalog="system" id="wOt-US-6g8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeW-86-AXK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-335" y="-18"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="3cC-f4-LLW">
+            <objects>
+                <viewController id="4aO-Xx-Z6c" customClass="SettingsViewController" customModule="InstagramCloneFirebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4q2-BB-CUg">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIr-7d-KMs">
+                                <rect key="frame" x="158" y="409" width="78" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutClicked:" destination="4aO-Xx-Z6c" eventType="touchUpInside" id="gO7-TY-PZn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="L4i-yS-r7d"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="cricket.ball" catalog="system" id="DWZ-2X-BzV"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toViewController" modalPresentationStyle="fullScreen" id="hyO-pg-aUw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RD9-8I-b3C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-335" y="646"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="htb-hX-rG2">
@@ -53,6 +83,7 @@
                     <connections>
                         <segue destination="vJo-Xc-GMc" kind="relationship" relationship="viewControllers" id="m5x-Q1-IkL"/>
                         <segue destination="o2Q-3I-zDr" kind="relationship" relationship="viewControllers" id="CU5-j9-W7t"/>
+                        <segue destination="4aO-Xx-Z6c" kind="relationship" relationship="viewControllers" id="8Og-pb-pOb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o23-In-250" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -68,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJb-Og-SZ6">
-                                <rect key="frame" x="78" y="406" width="76" height="35"/>
+                                <rect key="frame" x="78" y="440" width="76" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign In"/>
                                 <connections>
@@ -76,7 +107,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MK-lg-4W4">
-                                <rect key="frame" x="219" y="406" width="84" height="35"/>
+                                <rect key="frame" x="219" y="440" width="84" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
                                 <connections>
@@ -84,12 +115,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lER-LN-ksO">
-                                <rect key="frame" x="76" y="271" width="241" height="34"/>
+                                <rect key="frame" x="76" y="305" width="241" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaN-1p-wDt">
-                                <rect key="frame" x="130" y="96" width="133" height="37"/>
+                                <rect key="frame" x="130" y="37" width="133" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -129,7 +160,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cricket.ball" catalog="system" width="128" height="123"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
+        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

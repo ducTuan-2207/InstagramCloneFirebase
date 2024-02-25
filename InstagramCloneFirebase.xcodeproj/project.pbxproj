@@ -14,6 +14,9 @@
 		226DD12C2B8A0C7400264762 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 226DD12B2B8A0C7400264762 /* Assets.xcassets */; };
 		226DD12F2B8A0C7400264762 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226DD12D2B8A0C7400264762 /* LaunchScreen.storyboard */; };
 		226DD1372B8A62BD00264762 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 226DD1362B8A62BD00264762 /* GoogleService-Info.plist */; };
+		226DD1392B8B2D6C00264762 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226DD1382B8B2D6C00264762 /* FeedViewController.swift */; };
+		226DD13B2B8B2D9A00264762 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226DD13A2B8B2D9A00264762 /* UploadViewController.swift */; };
+		226DD13D2B8B2DB300264762 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226DD13C2B8B2DB300264762 /* SettingsViewController.swift */; };
 		C0A75E2D2846598019ACF0EE /* Pods_InstagramCloneFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6844E931C5D5B2F81F13EF24 /* Pods_InstagramCloneFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		226DD12E2B8A0C7400264762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		226DD1302B8A0C7400264762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		226DD1362B8A62BD00264762 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		226DD1382B8B2D6C00264762 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		226DD13A2B8B2D9A00264762 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		226DD13C2B8B2DB300264762 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3D1BE0E004AA51C039D82B96 /* Pods-InstagramCloneFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramCloneFirebase.release.xcconfig"; path = "Target Support Files/Pods-InstagramCloneFirebase/Pods-InstagramCloneFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		6844E931C5D5B2F81F13EF24 /* Pods_InstagramCloneFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramCloneFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DC7E852F7901E5F84DC345 /* Pods-InstagramCloneFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramCloneFirebase.debug.xcconfig"; path = "Target Support Files/Pods-InstagramCloneFirebase/Pods-InstagramCloneFirebase.debug.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +74,9 @@
 				226DD1222B8A0C7100264762 /* AppDelegate.swift */,
 				226DD1242B8A0C7100264762 /* SceneDelegate.swift */,
 				226DD1262B8A0C7100264762 /* ViewController.swift */,
+				226DD13A2B8B2D9A00264762 /* UploadViewController.swift */,
+				226DD13C2B8B2DB300264762 /* SettingsViewController.swift */,
+				226DD1382B8B2D6C00264762 /* FeedViewController.swift */,
 				226DD1282B8A0C7100264762 /* Main.storyboard */,
 				226DD12B2B8A0C7400264762 /* Assets.xcassets */,
 				226DD12D2B8A0C7400264762 /* LaunchScreen.storyboard */,
@@ -83,7 +92,6 @@
 				77DC7E852F7901E5F84DC345 /* Pods-InstagramCloneFirebase.debug.xcconfig */,
 				3D1BE0E004AA51C039D82B96 /* Pods-InstagramCloneFirebase.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -213,7 +221,10 @@
 			files = (
 				226DD1272B8A0C7100264762 /* ViewController.swift in Sources */,
 				226DD1232B8A0C7100264762 /* AppDelegate.swift in Sources */,
+				226DD1392B8B2D6C00264762 /* FeedViewController.swift in Sources */,
 				226DD1252B8A0C7100264762 /* SceneDelegate.swift in Sources */,
+				226DD13B2B8B2D9A00264762 /* UploadViewController.swift in Sources */,
+				226DD13D2B8B2DB300264762 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
