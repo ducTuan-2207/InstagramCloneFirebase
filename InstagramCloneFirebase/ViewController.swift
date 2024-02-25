@@ -16,10 +16,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // kiểm tra xem người dùng trước đó đã đăng nhập hay chưa
+        
     }
 
     @IBAction func signInClicked(_ sender: Any) {
-        performSegue(withIdentifier: "toFeedVC", sender: nil)
+//        performSegue(withIdentifier: "toFeedVC", sender: nil)
+        
+        if emailText.text != "" && passwordText.text != "" {
+            Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!) { authdata, error in
+                if error != nil {
+                    self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "Error")
+                } else {
+                    self.performSegue(withIdentifier: "toFeedVC", sender: nil)
+                }
+            }
+            
+        } else {
+            makeAlert(titleInput: "Error!", messageInput: "Ussername/Password?")
+        }
+        
     }
     
     @IBAction func singUpClicked(_ sender: Any) {
