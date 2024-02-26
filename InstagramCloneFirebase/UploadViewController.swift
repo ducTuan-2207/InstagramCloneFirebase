@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseStorage
 
 class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
@@ -34,6 +35,24 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
     
     // Hàm xử lý sự kiện khi người dùng nhấn vào nút upload
     @IBAction func actionButtonClicked(_ sender: Any) {
-        // Thực hiện hành động tương ứng ở đây
+        let storage = Storage.storage()
+        let storageReference = storage.reference()
+        let mediaFolder = storageReference.child("media")
+        
+        if let data = imageView.image?.jpegData(compressionQuality: 0.5){
+            let imageRefence = mediaFolder.child("image.jpg")
+            imageRefence.putData(data) { metadata, error in
+                if error != nil {
+                    print(error?.localizedDescription)
+                }else{
+                    imageRefence.downloadURL { url, error in
+                        if error == nil {
+                            let imageUrl = url?.absoluteString
+                            print(imageUrl)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
