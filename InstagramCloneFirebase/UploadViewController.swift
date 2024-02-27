@@ -33,42 +33,37 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
         dismiss(animated: true)
     }
     
+    func makeAlert(titleInput: String, messageInput: String){
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+        alert.addAction(okButton)
+        self.present(alert, animated: true)
+        
+    }
+    
     // Hàm xử lý sự kiện khi người dùng nhấn vào nút upload
     @IBAction func actionButtonClicked(_ sender: Any) {
         let storage = Storage.storage()
         let storageReference = storage.reference()
         let mediaFolder = storageReference.child("media")
         
-        if let imageData = imageView.image?.jpegData(compressionQuality: 0.5) {
-            let imageRefence = mediaFolder.child("image.jpg")
-            
-            // Tải lên dữ liệu hình ảnh vào Firebase Storage
-            imageRefence.putData(imageData, metadata: nil) { (metadata, error) in
-                if let error = error {
-                    // Xử lý lỗi (nếu có)
-                    print("Error uploading image: \(error.localizedDescription)")
-                } else {
-                    // Nếu không có lỗi, in ra thông tin metadata của hình ảnh đã tải lên (nếu cần)
-                    print("Image uploaded successfully!")
-                    
-                    // Lấy URL của hình ảnh đã tải lên
-                    imageRefence.downloadURL { (url, error) in
-                        if let error = error {
-                            // Xử lý lỗi (nếu có)
-                            print("Error getting download URL: \(error.localizedDescription)")
-                        } else if let downloadURL = url {
-                            // Lấy URL thành công, bạn có thể sử dụng downloadURL ở đây
-                            let imageURLString = downloadURL.absoluteString
-                            print("Download URL: \(imageURLString)")
+        if let data = imageView.image?.jpegData(compressionQuality: 0.5){
+            let uuid = UUID().uuidString
+            let imageRefence = mediaFolder.child("\(uuid).jpg")
+            imageRefence.putData(data) { metadata, error in
+                if error != nil {
+                    self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "Error")
+                }else{
+                    imageRefence.downloadURL { url, error in
+                        if error == nil {
+                            let imageUrl = url?.absoluteString
                             
-                            // Nếu muốn thực hiện bất kỳ hành động nào khác sau khi tải lên hình ảnh thành công, bạn có thể thực hiện ở đây.
-                            
-                            // Ví dụ: Gửi downloadURL đến một API, lưu trữ vào cơ sở dữ liệu, hiển thị trên giao diện người dùng, vv.
+                            //database
+                            print(imageUrl)
                         }
                     }
                 }
             }
-        } else {
-            print("No image selected!")
         }
-    }}
+    }
+}
