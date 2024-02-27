@@ -28,8 +28,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpe-xM-ihQ">
-                                <rect key="frame" x="157" y="525" width="79" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wpe-xM-ihQ">
+                                <rect key="frame" x="147" y="557" width="79" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="ZLR-dV-055"/>
+                                    <constraint firstAttribute="height" constant="35" id="jMI-GX-qjH"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Upload"/>
                                 <connections>
@@ -41,11 +45,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lWM-0m-lMa" firstAttribute="leading" secondItem="Yr6-Nw-cnw" secondAttribute="leading" id="3xo-wq-hI8"/>
+                            <constraint firstItem="Wpe-xM-ihQ" firstAttribute="top" secondItem="Yr6-Nw-cnw" secondAttribute="bottom" constant="75" id="Dd2-Yq-7nS"/>
                             <constraint firstItem="Yr6-Nw-cnw" firstAttribute="top" secondItem="lWM-0m-lMa" secondAttribute="bottom" constant="22" id="GaJ-ql-Fyl"/>
                             <constraint firstItem="lWM-0m-lMa" firstAttribute="trailing" secondItem="Yr6-Nw-cnw" secondAttribute="trailing" id="HRl-ps-8RU"/>
                             <constraint firstItem="lWM-0m-lMa" firstAttribute="centerX" secondItem="jiP-6K-k5H" secondAttribute="centerX" id="K1C-6r-GB3"/>
                             <constraint firstItem="lWM-0m-lMa" firstAttribute="top" secondItem="j6N-fM-96u" secondAttribute="top" constant="141" id="Qds-9T-1cz"/>
-                            <constraint firstItem="lWM-0m-lMa" firstAttribute="centerX" secondItem="Wpe-xM-ihQ" secondAttribute="centerX" id="olb-22-pIh"/>
+                            <constraint firstItem="lWM-0m-lMa" firstAttribute="centerX" secondItem="Wpe-xM-ihQ" secondAttribute="centerX" constant="10.166666666666686" id="olb-22-pIh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="square.and.arrow.up.fill" catalog="system" id="wOt-US-6g8"/>

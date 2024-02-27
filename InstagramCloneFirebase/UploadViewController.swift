@@ -39,20 +39,36 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
         let storageReference = storage.reference()
         let mediaFolder = storageReference.child("media")
         
-        if let data = imageView.image?.jpegData(compressionQuality: 0.5){
+        if let imageData = imageView.image?.jpegData(compressionQuality: 0.5) {
             let imageRefence = mediaFolder.child("image.jpg")
-            imageRefence.putData(data) { metadata, error in
-                if error != nil {
-                    print(error?.localizedDescription)
-                }else{
-                    imageRefence.downloadURL { url, error in
-                        if error == nil {
-                            let imageUrl = url?.absoluteString
-                            print(imageUrl)
+            
+            // Tải lên dữ liệu hình ảnh vào Firebase Storage
+            imageRefence.putData(imageData, metadata: nil) { (metadata, error) in
+                if let error = error {
+                    // Xử lý lỗi (nếu có)
+                    print("Error uploading image: \(error.localizedDescription)")
+                } else {
+                    // Nếu không có lỗi, in ra thông tin metadata của hình ảnh đã tải lên (nếu cần)
+                    print("Image uploaded successfully!")
+                    
+                    // Lấy URL của hình ảnh đã tải lên
+                    imageRefence.downloadURL { (url, error) in
+                        if let error = error {
+                            // Xử lý lỗi (nếu có)
+                            print("Error getting download URL: \(error.localizedDescription)")
+                        } else if let downloadURL = url {
+                            // Lấy URL thành công, bạn có thể sử dụng downloadURL ở đây
+                            let imageURLString = downloadURL.absoluteString
+                            print("Download URL: \(imageURLString)")
+                            
+                            // Nếu muốn thực hiện bất kỳ hành động nào khác sau khi tải lên hình ảnh thành công, bạn có thể thực hiện ở đây.
+                            
+                            // Ví dụ: Gửi downloadURL đến một API, lưu trữ vào cơ sở dữ liệu, hiển thị trên giao diện người dùng, vv.
                         }
                     }
                 }
             }
+        } else {
+            print("No image selected!")
         }
-    }
-}
+    }}
