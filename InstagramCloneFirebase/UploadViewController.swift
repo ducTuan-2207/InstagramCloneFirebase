@@ -1,5 +1,7 @@
 import UIKit
 import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
@@ -47,23 +49,42 @@ class UpdateViewController: UIViewController, UIImagePickerControllerDelegate & 
         let storageReference = storage.reference()
         let mediaFolder = storageReference.child("media")
         
-        if let data = imageView.image?.jpegData(compressionQuality: 0.5){
+        if let data = imageView.image?.jpegData(compressionQuality: 0.5) {
             let uuid = UUID().uuidString
             let imageRefence = mediaFolder.child("\(uuid).jpg")
             imageRefence.putData(data) { metadata, error in
-                if error != nil {
-                    self.makeAlert(titleInput: "Error", messageInput: error?.localizedDescription ?? "Error")
-                }else{
+                if let error = error {
+                    self.makeAlert(titleInput: "Error", messageInput: error.localizedDescription)
+                } else {
                     imageRefence.downloadURL { url, error in
-                        if error == nil {
-                            let imageUrl = url?.absoluteString
-                            
-                            //database
-                            print(imageUrl)
+                        guard let downloadURL = url else {
+                            self.makeAlert(titleInput: "Error", messageInput: "Failed to get download URL.")
+                            return
+                        }
+                        
+                        // Database
+                        let firestoreDatabase = Firestore.firestore()
+                        var firestoreReference: DocumentReference? = nil
+                        let firebasePost = [
+                            "imageUrl": downloadURL.absoluteString,
+                            "postedBy": Auth.auth().currentUser?.email ?? "",
+                            "postComment": self.commentText.text ?? "",
+                            "date": Timestamp(), // Sử dụng Timestamp để lưu thời gian hiện tại
+                            "like": 0
+                        ]
+                        
+                        firestoreReference = firestoreDatabase.collection("Losts").addDocument(data: firebasePost) { error in
+                            if let error = error {
+                                self.makeAlert(titleInput: "Error!", messageInput: error.localizedDescription)
+                            } else {
+                                self.makeAlert(titleInput: "Success!", messageInput: "Upload successfully.")
+                            }
                         }
                     }
                 }
             }
+        } else {
+            self.makeAlert(titleInput: "Error", messageInput: "Failed to get image data.")
         }
     }
 }
